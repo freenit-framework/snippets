@@ -61,24 +61,16 @@
     "body": [
       "import ormar",
       "",
-      "from freenit.config import getConfig",
-      "",
-      "from freenit.models.metaclass import AllOptional",
-      "from freenit.models.ormar.base import OrmarBaseModel",
-      "",
-      "config = getConfig()",
+      "from freenit.models.ormar.base import OrmarBaseModel, generate_optional, ormar_config",
       "",
       "",
       "class ${1}(OrmarBaseModel):",
-      "    class Meta(config.meta):",
-      "        pass",
+      "    ormar_config = ormar_config.copy()",
       "",
       "    id: int = ormar.Integer(primary_key=True)",
       "    ${0}",
       "",
-      "",
-      "class ${1}Optional(${1}, metaclass=AllOptional):",
-      "    pass"
+      "${1}Optional = generate_optional(${1})"
     ],
     "description": "Freenit model using Ormar"
   }
