@@ -7,13 +7,14 @@
       "import ormar",
       "import ormar.exceptions",
       "from fastapi import HTTPException",
-      "",
       "from freenit.api.router import route",
       "",
       "from ..models.${1} import ${1/(.*)/${1:/capitalize}/}, ${1/(.*)/${1:/capitalize}/}Optional",
       "",
+      "tags=['${1}']",
       "",
-      "@route('/${1}s', tags=['${1}'])",
+      "",
+      "@route('/${1}s', tags=tags)",
       "class ${1/(.*)/${1:/capitalize}/}ListAPI():",
       "    @staticmethod",
       "    async def get() -> List[${1/(.*)/${1:/capitalize}/}]:",
@@ -25,7 +26,7 @@
       "        return ${1}",
       "",
       "",
-      "@route('/${1}s/{id}', tags=['${1}'])",
+      "@route('/${1}s/{id}', tags=tags)",
       "class ${1/(.*)/${1:/capitalize}/}DetailAPI():",
       "    @staticmethod",
       "    async def get(id: int) -> ${1/(.*)/${1:/capitalize}/}:",
@@ -60,8 +61,11 @@
     "prefix": "freenitormar",
     "body": [
       "import ormar",
-      "",
-      "from freenit.models.ormar.base import OrmarBaseModel, generate_optional, ormar_config",
+      "from freenit.models.ormar.base import (",
+      "    OrmarBaseModel,",
+      "    generate_optional,",
+      "    ormar_config,",
+      ")",
       "",
       "",
       "class ${1}(OrmarBaseModel):",
@@ -73,5 +77,21 @@
       "${1}Optional = generate_optional(${1})"
     ],
     "description": "Freenit model using Ormar"
+  },
+
+  "pydantic": {
+    "prefix": "freenitpydantic",
+    "body": [
+      "from pydantic import BaseModel, Field",
+      "from freenit.models.ormar.base import generate_optional",
+      "",
+      "",
+      "class ${1}(BaseModel):",
+      "    ${2:field_name}: str = Field(\"\", description=(\"${3:Field description}\"))",
+      "",
+      "",
+      "${1}Optional = generate_optional(${1})"
+    ],
+    "description": "Freenit model using Pydantic"
   }
 }
