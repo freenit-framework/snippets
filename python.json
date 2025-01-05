@@ -58,10 +58,10 @@
   },
   
   "ormar": {
-    "prefix": "freenitormar",
+    "prefix": "freenitsql",
     "body": [
       "import ormar",
-      "from freenit.models.ormar.base import (",
+      "from freenit.models.sql.base import (",
       "    OrmarBaseModel,",
       "    generate_optional,",
       "    ormar_config,",
@@ -71,7 +71,7 @@
       "class ${1}(OrmarBaseModel):",
       "    ormar_config = ormar_config.copy()",
       "",
-      "    id: int = ormar.Integer(primary_key=True)",
+      "    id = ormar.Integer(primary_key=True)",
       "    ${0}",
       "",
       "${1}Optional = generate_optional(${1})"
