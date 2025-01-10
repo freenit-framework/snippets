@@ -1,6 +1,6 @@
 {
   "store": {
-    "prefix": "freenitstoresvelte",
+    "prefix": "freenitstore",
     "body": [
       "import { writable } from 'svelte/store'",
       "",
@@ -28,7 +28,7 @@
       "    }",
       "  }",
       "",
-      "  async create(${1}Data) {",
+      "  async create(${1}Data: Record<string, any>) {",
       "    try {",
       "      const response = await fetch(",
       "        '/api/v1/${1}s', ",
