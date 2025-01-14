@@ -10,6 +10,7 @@
       "",
       "  constructor(prefix) {",
       "    this.prefix = prefix",
+      "    store.${1} = this",
       "  }",
       "",
       "  fetchAll = async (page: Number = 1, perpage: Number = 10) => {",
