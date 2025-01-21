@@ -2,7 +2,7 @@
   "store": {
     "prefix": "freenitstore",
     "body": [
-      "import { methods, store } from '.'",
+      "import { methods, store } from '@freenit-framework/core'",
       "",
       "export default class ${1/(.*)/${1:/capitalize}/}Store {",
       "  list = \\$state({})",
