@@ -2,7 +2,8 @@
   "store": {
     "prefix": "freenitstore",
     "body": [
-      "import { methods, store } from '@freenit-framework/core'",
+      "import { methods } from '@freenit-framework/core'",
+      "import store from '.'",
       "",
       "export default class ${1/(.*)/${1:/capitalize}/}Store {",
       "  list = \\$state({ page: 0, perpage: 0, pages: 0, data: [], total: 0 })",
@@ -10,7 +11,6 @@
       "",
       "  constructor(prefix) {",
       "    this.prefix = prefix",
-      "    store.${1} = this",
       "  }",
       "",
       "  fetchAll = async (page: Number = 1, perpage: Number = 10) => {",
